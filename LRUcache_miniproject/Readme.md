@@ -1,5 +1,6 @@
 # LRU cache
 
+![LRU cache](https://github.com/pranavdave893/Leetcode/blob/master/LRUcache_miniproject/0_fOwBd3z0XtHh7WN1.png)
 
 ## Original problem link : https://leetcode.com/problems/lru-cache/discuss/?orderBy=recent_activity
 

@@ -17,6 +17,7 @@ while(j>=0):
         if not x[k]<0:
             k = k-1
 
+print x
 for i in range(len(x)-1):
     if x[i]>0:
         j = i

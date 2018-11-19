@@ -5,7 +5,6 @@ for i in range(r):
         a[i][j] = int(input())
 
 print (a)
-import pdb; pdb.set_trace()
 col_r = 0
 row_d = 0
 col_l = -1

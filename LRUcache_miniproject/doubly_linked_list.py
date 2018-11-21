@@ -12,13 +12,13 @@ class Node(object):
     
     def print_list(self):
         current = self.head
-        print "[",
+        print ("[",end="")
         while current != None:
-            print current.data,
+            print (current.data,end=""),
             current = current.next
             if not current is None:
-                print ",",
-        print "]",
+                print (",",end="")
+        print ("]")
     
     def insert_at_beginning(self,data):
         new_node = Node(data,None,None)

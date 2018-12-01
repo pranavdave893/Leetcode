@@ -1,7 +1,7 @@
 
-class Node:
+class Node():
     def __init__(self,data=None):
-        self.data = None
+        self.data = data
         self.next = None
         self.length = 0
     
@@ -144,24 +144,10 @@ class Node:
     #     print_backward(tail)
     #     print head,
 
-
+"""
 node = Node()
 node.insert_at_beginning(1)
 node.insert_at_end(2)
 node.insert_at_end(3)
 node.print_list()
-
-# node.set_next(node2)
-# node2.set_next(node3)
-
-
-
-
-node 
-
-
-    
-
-
-
-
+"""

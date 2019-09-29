@@ -8,7 +8,7 @@ class BinarySearchTree:
         if self.left_child == None:
             self.left_child = BinaryTree(value)
         else:
-            new_node = BinaryTree(value)
+            new_node = (value)
             new_node.left_child = self.left_child
             self.left_child = new_node
     
@@ -73,7 +73,7 @@ class BinarySearchTree:
         
         while currentlevel:
             temp = currentlevel.pop(-1)
-            print (temp.value, " ", end="")
+            # print (temp.value, " ", end="")
             
             if ltr:
                 if temp.left_child:

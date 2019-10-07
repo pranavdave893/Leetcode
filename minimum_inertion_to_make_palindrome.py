@@ -1,5 +1,4 @@
 class Solution(object):
-    # Recursive Solution.
     def shortestPalindrome(self, s):
         if not s:
             return 0

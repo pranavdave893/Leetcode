@@ -28,7 +28,7 @@ class Solution(object):
             """
             n = length of string
             """
-            dp_matrix = [[0]*len(s) for i in range(n)]
+            dp_matrix = [[0]*len(new_str) for i in range(n)]
 
             for x in range(1, n):
                 l = 0
@@ -39,9 +39,17 @@ class Solution(object):
                         dp_matrix[l][y] = min(dp_matrix[l+1][y], dp_matrix[l][y-1]) + 1
 
                     l += 1
-            return dp_matrix[0][n-1]
+            
+            last_max_count = max(dp_matrix[l+1][y], dp_matrix[l][y-1]) + 1
+            last_min_count = dp_matrix[0][n-1]
+            
+            last_min_count_str = new_str[-last_min_count:][::-1] + new_str
+            if last_min_count_str == last_min_count_str[::-1]: return last_min_count_str
+           
+            last_max_count_str = new_str[-last_max_count:][::-1] + new_str
+            if last_max_count_str == last_max_count_str[::-1]: return last_max_count_str
         
         print makePalindrome_dp(s, len(s))
 
 abc = Solution()
-abc.shortestPalindrome('anasdad')
+abc.shortestPalindrome("abb")

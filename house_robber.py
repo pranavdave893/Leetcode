@@ -1,4 +1,12 @@
 class Solution(object):
+    
+    def abcd(self, nums):
+        # O(1) Space.
+        rob, not_rob = 0, 0
+        for num in nums:
+            rob, not_rob = not_rob+num, max(rob, not_rob)
+        return max(rob, not_rob)
+    
     def rob(self, nums):
         """
         :type nums: List[int]

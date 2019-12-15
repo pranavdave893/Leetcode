@@ -6,6 +6,7 @@ class Solution(object):
             return word_str in wordDict
 
         def findword(strn):
+            import pdb; pdb.set_trace()
             if strn in dct:
                 return dct[strn]
             
@@ -24,8 +25,8 @@ class Solution(object):
             return False
         return findword(s)
 abc = Solution()
-strn = "aaaab"
-word_dict = ["a","aa","aaa","aaaa","aaaab"]
+strn = "leetcode"
+word_dict = ["leet", "code"]
 # strn = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
 # word_dict = ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
 print (abc.wordBreak(strn, word_dict))

@@ -9,31 +9,36 @@ class Solution(object):
         :rtype: int
         https://leetcode.com/problems/word-ladder/discuss/346920/Python3-Breadth-first-search
         """
-        word_map = defaultdict(list)
+        # wordList = set(wordList)
+        
+        if endWord not in wordList:
+            return 0
+        
         L = len(beginWord)
+
+        word_dict = defaultdict(list)
+
         for word in wordList:
             for i in range(L):
-               new_word = word[:i] + "*" + word[i+1:]
-               word_map[new_word].append(word)
+                word_dict[word[:i] + "*" + word[i+1:]].append(word)
         
-        answer = []
-        q = deque([(beginWord, 1)])
+        dq = deque([(beginWord, 1)])
         visited = set()
-        tmp_answer = [beginWord]
-        def find_path(tmp_answer, word_map, visited, currWord):
+        tmp = []
+
+        while dq:
+            current_word, level = dq.popleft()
             for i in range(L):
-                # check for word like h*t, *ot in word_map
-                for new_possible_word in word_map[currWord[:i] + "*" + currWord[i+1:]]:
-                    if new_possible_word == endWord:
-                        tmp_answer.append(endWord)
-                        return tmp_answer
-                    
-                    if new_possible_word not in visited:
-                        tmp_answer.append(new_possible_word)
-                        visited.add(new_possible_word)
-                        
-                        find_path(tmp_answer, word_map, visited, new_possible_word)
-            return []
+                for new_word in word_dict[current_word[:i] + "*" + current_word[i+1:]]:
+                    tmp.append(new_word)
+                    if new_word == endWord:
+                        return tmp, level + 1
+                
+                    if new_word not in visited:
+                        visited.add(new_word)
+                        dq.append((new_word, level+1))
+        
+        return 0
         
         
         tmp_list = find_path(tmp_answer, word_map, visited, beginWord)

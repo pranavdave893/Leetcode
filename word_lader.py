@@ -9,10 +9,10 @@ class Solution(object):
         :rtype: int
         https://leetcode.com/problems/word-ladder/discuss/346920/Python3-Breadth-first-search
         """
-        # wordList = set(wordList)
+        wordList = set(wordList)
         
         if endWord not in wordList:
-            return 0
+            return []
         
         L = len(beginWord)
 
@@ -22,17 +22,20 @@ class Solution(object):
             for i in range(L):
                 word_dict[word[:i] + "*" + word[i+1:]].append(word)
         
-        dq = deque([(beginWord, 1)])
+        dq = deque([beginWord))
+        flag = False
         visited = set()
         tmp = []
 
         while dq:
+            new_queue = []
+            to_remove = set()
             current_word, level = dq.popleft()
             for i in range(L):
                 for new_word in word_dict[current_word[:i] + "*" + current_word[i+1:]]:
                     tmp.append(new_word)
                     if new_word == endWord:
-                        return tmp, level + 1
+                        
                 
                     if new_word not in visited:
                         visited.add(new_word)

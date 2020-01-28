@@ -31,6 +31,6 @@ class Solution(object):
 
 abc = Solution()
 coins = [1,2,3]
-number = 4
+number = 11
 print (abc.coinchange(coins, number))
 print (abc.coinchnage_fast(coins, number))

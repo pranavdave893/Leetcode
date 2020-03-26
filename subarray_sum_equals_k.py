@@ -18,6 +18,6 @@ class Solution:
 
 
         
-
+# XXX : similar problem sub array sum divisible by k.
 abc = Solution()
-print (abc.subarraySum([0,0,0,0,0,0,0,0,0,0],0))
+print (abc.subarraySum([1,2,0,3,0],3))

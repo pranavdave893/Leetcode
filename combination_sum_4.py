@@ -9,6 +9,7 @@ class Solution(object):
         dp = {}
 
         def dp_recur(nums, target, dp):
+            import pdb; pdb.set_trace()
             if target in dp:
                 return dp[target]
             else:
@@ -45,6 +46,6 @@ class Solution(object):
 
 abc = Solution()
 print (abc.combinationSum4([1,2,3,4], 4))
-print (abc.combinationSum4([3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], 10))
-print (abc.combinationSum4_bottomup([1,2,3,4], 4))
-print (abc.combinationSum4_bottomup([3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], 10))
+# print (abc.combinationSum4([3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], 10))
+# print (abc.combinationSum4_bottomup([1,2,3,4], 4))
+# print (abc.combinationSum4_bottomup([3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], 10))

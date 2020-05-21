@@ -26,7 +26,7 @@ class Solution(object):
         
 
 abc = Solution()
-print (abc.nextPermutation([1,3,2]))
+print (abc.nextPermutation([1,1,5,1]))
 # print (abc.nextPermutation([1,2,3]))
 # print (abc.nextPermutation([3,2,1]))
 # print (abc.nextPermutation([1,1,5]))

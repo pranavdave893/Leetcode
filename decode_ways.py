@@ -49,5 +49,5 @@ class Solution(object):
         return dp[-1]
 
 abc = Solution()
-print (abc.decodeWays('103'))
+print (abc.decodeWays('20'))
 

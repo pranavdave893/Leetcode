@@ -4,27 +4,14 @@ class Solution:
         :type n: int
         :rtype: bool
         """
-        def get_square_sum(q):
-            t = 0
-
-            while(q!=0):
-                r = q % 10
-                t += r * r
-                q = q / 10
-
-            return t
-        
-        while(n > 4):
-            n  = get_square_sum(n)
-            if n == 1:
-                return True
-        
-        if n == 1:
-            return True
-        return False
+        seen = set()
+        while n not in seen:
+            seen.add(n)
+            n = sum(int(x) ** 2 for x in str(n))
+        return n == 1
 
 abc = Solution()
-print (abc.isHappy(2))
+print (abc.isHappy(19))
 
                 
 

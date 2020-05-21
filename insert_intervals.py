@@ -5,22 +5,41 @@ class Solution(object):
         :type newInterval: List[int]
         :rtype: List[List[int]]
         """
-        answer = []
-        for it in intervals[::-1]:
-            if it[0] <= newInterval[1] and it[1] >= newInterval[0]:
-                newInterval = [min(newInterval[0], it[0]), max(it[1], newInterval[1])]
-            else:
-                answer.append(it)
+        if not intervals: return 
+        ans = []
         
-        answer.append(newInterval)
-        answer.sort(key=lambda x:x[0])
-        print (answer)
+        nI = newInterval
+        is_added = False
+        
+        for x in intervals:
+            changed_pre = False
+            pre = ans[-1] if is_added else x
+            if is_added:
+                if pre[0] <= x[0] <= pre[1]:
+                    pre[0] = min(pre[0], x[0])
+                    pre[1] = max(pre[1], x[1])
+                    changed_pre = True
+
+            elif x[0] <= nI[0] <= x[1]:
+                x[0] = min(x[0], nI[0])
+                x[1] = max(x[1], nI[1])
+                is_added = True
+
+            if not changed_pre:
+                ans.append(x)
+        
+        if not is_added:
+            ans.append(newInterval)
+        return ans
 
 abc = Solution()
+
+[[1,3],[6,9]],
+[2,5]
 intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]]
 newInterval = [4,8]
-abc.insert(intervals, newInterval)
+print (abc.insert(intervals, newInterval))
 
-intervals = [[1,3],[6,9]]
-newInterval = [2,5]
-abc.insert(intervals, newInterval)
+intervals = [[1,5]]
+newInterval = [6,8]
+print (abc.insert(intervals, newInterval))

@@ -20,8 +20,7 @@ class MedianFinder(object):
 
 abc = MedianFinder()
 abc.addNum(1)
-abc.addNum(2)
 abc.addNum(3)
-abc.addNum(0)
-abc.addNum(-5)
+abc.addNum(-1)
+# abc.addNum(-5)
 print (abc.findMedian())

@@ -35,19 +35,4 @@ class Solution(object):
         return False if len(result) != len(indegree) else result
 
 abc = Solution()
-# print (abc.canFinish(12,[
-#     [8,10],
-#     [0, 8],
-#     [0,10],
-#     [0, 2],
-#     [2,4],
-#     [4,5],
-#     [5,6],
-#     [1,6],
-#     [3,6],
-#     [2,3],
-#     [2,1],
-#     ]
-#     ))
-
-print (abc.canFinish(3,[[1,0]]))
+print (abc.canFinish(2,[[1,0], [0,1]]))

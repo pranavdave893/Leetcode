@@ -3,10 +3,9 @@ class Solution(object):
         dp = [amount+1] * (amount+1)
         dp[0] = 0
 
-        for i in range(1, amount+1):
-            for coin in coins:
-                if i >= coin:
-                    dp[i] = min(dp[i], dp[i-coin]+1)
+        for coin in coins:
+            for x in range(coin, amount+1):
+                dp[x] = min(dp[x], dp[x-coin]+1)
 
         if dp[-1] == amount + 1:
             return -1

@@ -1,4 +1,4 @@
-def kahns_algo(self, graph):
+def kahns_algo(graph):
         # Find number of incoming edges for each vertex
         in_degree = {}
         for x, neighbors in graph.items():
@@ -28,3 +28,4 @@ def kahns_algo(self, graph):
             return None # Not DAG
         else:
             return result
+print (kahns_algo([[1,0],[0,1]]))

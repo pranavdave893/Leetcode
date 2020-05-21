@@ -18,19 +18,22 @@ class Solution(object):
         
         return dp[len(coins)][number]
 
-    def coinchnage_fast(self, coins, number):
-        dp = [0] * (number + 1)
-        dp[0] = 1
+    def coinchnage_fast(self, coins, amount):
+        dp = [amount+1] * (amount+1)
+        dp[0] = 0
 
-        for coin in coins:
-            for x in range(coin, number+1):
-                dp[x] += dp[x-coin]
-        
-        return dp[number]
+        for i in range(1, amount+1):
+            for coin in coins:
+                if i >= coin:
+                    dp[i] = min(dp[i], dp[i-coin]+1)
+
+        if dp[-1] == amount + 1:
+            return -1
+        return dp[-1]
 
 
 abc = Solution()
-coins = [1,2,3]
+coins = [1,2,5]
 number = 11
 print (abc.coinchange(coins, number))
 print (abc.coinchnage_fast(coins, number))

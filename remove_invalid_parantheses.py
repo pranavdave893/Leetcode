@@ -1,4 +1,13 @@
 class Solution(object):
+    def is_valid(self, s):
+        count = 0
+        for x in s:
+            count += 1 if x == "(" else 0
+            count -= 1 if x == ")" else 0
+            if count < 0:
+                return False
+        return count == 0
+
     def removeInvalidParentheses(self, s):
         res = []
         self.visited = set([s])
@@ -34,36 +43,21 @@ class Solution(object):
         return res
 
     def removeInvalidParentheses_bfs(self, s):
-        def is_valid(s):
-            ctr = 0
-            for x in s:
-                if x == '(':
-                    ctr += 1
-                elif x == ')':
-                    ctr -= 1
-                elif ctr < 0:
-                    return False
+        level = {s}
+        while True:
+            new_level = set()
+            result = []
 
-            return ctr == 0
-
-        q = {s}
-
-        result = []
-        while q:
-            for x in q:
-                if is_valid(s):
+            for x in level:
+                if self.is_valid(x):
                     result.append(x)
-            if result:
-                return result
-            
-            new_q = set()
-            for x in q:
-                for i in xrange(len(x)):
-                    new_s = x[:i] + x[i+1:]
-                    new_q.add(new_s)
-            q = new_q
+
+            if result: return result
         
-        return [""]
+            for x in level:
+                for i in range(len(x)):
+                    new_level.add(x[:i] + x[i+1:])
+            level = new_level
 
 
 abc = Solution()

@@ -1,4 +1,3 @@
-import numpy as np
 class Solution(object):
     def rotate_1(self, matrix):
         """
@@ -29,11 +28,11 @@ class Solution(object):
        
 
 abc = Solution()
-print (abc.rotate_1([
-  [1,2,3],
-  [4,5,6],
-  [7,8,9]
-]))
+# print (abc.rotate_1([
+#   [1,2,3],
+#   [4,5,6],
+#   [7,8,9]
+# ]))
 
 print (abc.rotate_2([
   [1,2,3],

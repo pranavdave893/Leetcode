@@ -32,7 +32,7 @@ class Solution(object):
                 if indegree[neighbour] == 0:
                     empty.add(neighbour)
             
-        return False if len(result) != len(indegree) else result
+        return [] if len(result) != len(indegree) else result
 
 abc = Solution()
-print (abc.canFinish(2,[[1,0], [0,1]]))
+print (abc.canFinish(2,[[1,0]]))

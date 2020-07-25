@@ -6,7 +6,6 @@ class Solution(object):
             return word_str in wordDict
 
         def findword(strn):
-            import pdb; pdb.set_trace()
             if strn in dct:
                 return dct[strn]
             

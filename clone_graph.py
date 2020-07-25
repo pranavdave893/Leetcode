@@ -33,3 +33,25 @@ class Solution(object):
             return new_node
         
         return dfs(None, node)
+
+from collections import deque
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        
+        if not node: return 
+        visited = {node: Node(node.val)}
+        
+        q = deque()
+        q.append(node)
+        
+        while q:
+            n = q.popleft()
+            
+            for child in n.neighbors:
+                if child not in visited:
+                    visited[child] = Node(child.val)
+                    q.append(child)
+                
+                visited[n].neighbors.append(visited[child])
+        
+        return visited[node]

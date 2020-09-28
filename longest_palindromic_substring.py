@@ -59,4 +59,4 @@ class Solution(object):
         return string.replace('#','')
 
 abc = Solution()
-print (abc.lps("abb"))
+print (abc.longestPalindrome_dp("babad"))

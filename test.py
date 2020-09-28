@@ -1,20 +1,19 @@
-def fibonacciSimpleSum(n):
+import heapq
+from collections import Counter
 
-    fib_array = [0, 1]
-    
-    i = 0
-    j = 1
 
-    while fib_array[-1] < n:
-        fib_array.append(fib_array[i] + fib_array[j])
-        i += 1
-        j += 1
+def output(elements):
+    heap = []
+    element_to_frequency = Counter(elements)
+    elements = []
 
-    fib_array = set(fib_array)
+    for element, frequency in element_to_frequency.items():
+        heapq.heappush(heap, (frequency, -element))
 
-    for x in fib_array:
-        if n-x in fib_array: return True
-    
-    return False
+    while heap:
+        frequency, element = heapq.heappop(heap)
+        elements.extend([-element] * frequency)
 
-print (fibonacciSimpleSum(66))
+    return elements
+
+print (output([7,7,7,7,2,2,3,3,1,1,9,9,9,9,9,6,6,6,6]))

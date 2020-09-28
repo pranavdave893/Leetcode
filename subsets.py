@@ -1,3 +1,17 @@
+# Better solution
+class Solution_2:
+
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        self.dfs(nums, res, [], 0)
+        return res
+    
+    
+    def dfs(self, nums, res, path, i):
+        res.append(path)
+        for x in range(i, len(nums)):
+            self.dfs(nums, res, path+[nums[x]], x+1)
+    
 class Solution(object):
     def subsets(self, nums):
         result = []

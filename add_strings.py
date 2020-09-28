@@ -11,15 +11,22 @@ class Solution(object):
         n2_s = len(num2) - 1
         sum_string = []
         carry = 0
-        while (n2_s => 0 and n1_s => 0):
+        while (n2_s >= 0 and n1_s >= 0):
             
-            temp = dct[n2_s] + dct[n1_s] + carry
+            temp = dct[num2[n2_s]] + dct[num1[n1_s]] + carry
 
             if temp > 10:
                 temp = temp % 10
                 carry = 1
             
             sum_string.append('%s' %temp)
+            n2_s -= 1
+            n1_s -= 1
+        
+        return ''.join(sum_string[::-1])
+
+abc = Solution()
+print (abc.addStrings('1234', '456'))
 
             
 

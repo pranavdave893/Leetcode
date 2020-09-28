@@ -1,53 +1,34 @@
+from typing import List
 class Solution:
-    def numSteps(self, a,b,c):        
-        abcd = [['a', a], ['b', b], ['c',c]]
-        abcd.sort(key=lambda x: -x[1])
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         
-        ans = []
+        word_dict = set(wordDict)
         
-        for idx, x in enumerate(abcd):
-            for y in range(abcd[idx][1]):
-                ans.append(abcd[idx][0])
+        memo = {}
         
-        start = 0
-        end = len(ans)-1
-        ct = 1
-        while start < end:
-            if start > 0 and ans[start] == ans[start-1]:
-                ct += 1
+        def dfs(s):
             
-            if ct == 3:
-                if ans[start] != ans[end]:
-                    ans[start], ans[end] = ans[end], ans[start]
-                    end -= 1
-                    ct = 1
+            if s in memo:
+                return memo[s]
             
-            start += 1
-        
-
-        # if start+2 < len(ans):
-        #     ans = ans[:start+2]
-        # else:
-        #     ans = ans[:start-1]
-        ct = 1
-        last = ans[len(ans)-1]
-        first = True
-            if ct < 3:
-                if not first:
-                    break
-            for x in ans[::-1]:
-                if x == last:
-                    ct += 1
+            if not s:
+                return ['']
+            
+            memo[s] = []
+            
+            for i in range(1, len(s)+1):
+                word = s[:i]
                 
-                if ct == 3:
-                    ans.pop()
-
-            first = False
-            
+                if word in word_dict:
+                    
+                    for next_str in dfs(s[i:]):
+                        memo[s].append(word + " " + next_str)
+            return memo[s]
         
-        return "".join(ans)
-     
+        dfs(s)
+        
+        return [x[:-1] for x in memo[s]]
 
 abc = Solution()
-print (abc.numSteps(2,2,1))
-print (abc.numSteps(7,1,0))
+abc.wordBreak("catsanddog",
+["cat","cats","and","sand","dog"])

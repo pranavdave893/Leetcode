@@ -14,3 +14,6 @@ class Solution():
 
             l += 1; r -= 1
         return True
+
+abc = Solution()
+print (abc.isPalindrome("abca"))

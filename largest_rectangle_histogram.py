@@ -1,7 +1,7 @@
+from typing import List
 class Solution:
-    # @param height, a list of integer
-    # @return an integer
-    def largestRectangleArea(self, height):
+
+    def largestRectangleArea(self, height: List[int]) -> int:
         stack = [-1]
         height.append(0)
         ans = 0
@@ -13,10 +13,27 @@ class Solution:
             stack.append(i)
         
         return ans
+    
+
+    def largestRectangleArea_divide(self, heights: List[int]) -> int:
+        
+        def divide(start:int, end:int) -> int:
+            if start > end:
+                return 0
+            
+            min_idx = start
+            
+            for idx in range(start, end+1):
+                if heights[min_idx] > heights[idx]:
+                    min_idx = idx
+            
+            return max(heights[min_idx] * (end - start + 1), max(divide(start, min_idx-1), divide(min_idx+1, end)))
+        
+        return divide(0, len(heights)-1)
             
 
 
         
 
 abc = Solution()
-print (abc.largestRectangleArea([2,1,5,6,2,3,2,2,1,1,1,1,1]))
+print (abc.largestRectangleArea([6,7,5,2,4,5,9,3]))

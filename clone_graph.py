@@ -52,6 +52,8 @@ class Solution:
                     visited[child] = Node(child.val)
                     q.append(child)
                 
-                visited[n].neighbors.append(visited[child])
+                copy_node = visited[n]
+                copy_child = visited[child]
+                copy_node.neighbors.append(copy_child)
         
         return visited[node]

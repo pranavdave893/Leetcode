@@ -1,4 +1,50 @@
 class Solution(object):
+    def trap_stack(self, x):
+        """
+        Stack based approch Space O(N) and Time O(N)
+        """
+        stack = []
+        ans = 0
+        for i in range(len(height)):
+            while stack and height[i] > height[stack[-1]]:
+                            
+                top = stack.pop()
+                
+                if not stack:
+                    break
+                    
+                distance = i- stack[-1] - 1
+                min_height = min(height[i], height[stack[-1]]) - height[top]
+                
+                ans += distance*min_height
+            
+            stack.append(i)
+        return ans
+
+        """
+        stack = []
+        water = 0
+        for idx, e in enumerate(height):
+            
+            while stack and e >= stack[-1][0]:
+                
+                top, _ = stack.pop()
+                
+                if not stack:
+                    break
+                    
+                left_boundry, left_distance  = stack[-1]
+                
+                height = min(left_boundry, e) - top
+                
+                distance = idx - left_distance - 1
+                
+                water += distance*height
+            
+            stack.append((e, idx))
+        return water
+        """
+    
     def trap(self, x):
         """
         :type height: List[int]

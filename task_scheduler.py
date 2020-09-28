@@ -38,5 +38,5 @@ class Solution(object):
         return answer
     
 abc = Solution()
-print (abc.leastInterval(["A","B","C"], 2))
+print (abc.leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"], 2))
 

@@ -41,10 +41,35 @@ class Solution(object):
         return ans
 
 
+    def maxSlidingWindow_dq(self, nums, k):
+        from collections import deque
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        q = deque()
+        result = []
+        
+        for i in range(len(nums)):
+            # the first/left (max) element is out of the current window
+            if q and i - q[0] == k:
+                q.popleft()
+            
+            while q:
+                # pop useles elements from last/right of the queue
+                if nums[q[-1]] < nums[i]:
+                    q.pop()
+                else:
+                    break
+            
+            q.append(i)
+            
+            if i >= k-1: # i == k-1 is the beginning of a full window
+                result.append(nums[q[0]])
+            
+        return result
+
 abc = Solution()
 print (abc.maxSlidingWindow([-7,-8,7,5,7,1,6,0], 4))
-
-
-
-
-            
+print (abc.maxSlidingWindow_dq([1,2,3,4,5,6,7,8], 3))            

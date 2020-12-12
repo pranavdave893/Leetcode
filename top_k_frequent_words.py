@@ -1,33 +1,38 @@
-from collections import Counter
-import heapq
+"""
+https://leetcode.com/problems/top-k-frequent-words/
+"""
 
-class FreqWord(object):
+import collections
+import heapq
+class Solution:
+    # Time Complexity = O(n + nlogk)
+    # Space Complexity = O(n)
+    def topKFrequent(self, words, k):
+        count = collections.Counter(words)
+        heap = []
+        for key, value in count.items():
+            heapq.heappush(heap, Word(value, key))
+            if len(heap) > k:
+                heapq.heappop(heap)
+        res = []
+        for _ in range(k):
+            res.append(heapq.heappop(heap).word)
+        return res[::-1]
+
+class Word:
+    
     def __init__(self, freq, word):
         self.freq = freq
         self.word = word
-
-    def __cmp__(self, other):
-        if self.freq != other.freq:
-            return cmp(self.freq, other.freq)
-        else:
-            return cmp(other.word, self.word)
-
-
-class Solution(object):
-    def topKFrequent(self, words, k):
-        """
-        :type words: List[str]
-        :type k: int
-        :rtype: List[str]
-        """
-        count = Counter(words)
-        heap = []
-        for word, freq in count.items():
-            heapq.heappush(heap, FreqWord(freq, word))
-            if len(heap) > k:
-                heapq.heappop(heap)
-        
-        print ([heapq.heappop(heap).word for _ in xrange(k)][::-1])
+    
+    
+    def __lt__(self, other):
+        if self.freq == other.freq:
+            return self.word > other.word
+        return self.freq < other.freq
+    
+    def __eq__(self, other):
+        return self.freq == other.freq and self.word == other.word
 
 words = ["i", "love", "leetcode", "i", "love", "coding"]
 abc = Solution()

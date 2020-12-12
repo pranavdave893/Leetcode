@@ -31,6 +31,43 @@
 
 # print (recur(abc, 0))
 
+class SolutionRecur:
+    
+    def __init__(self):
+        self.memo = {}
+    
+    
+    def recur(self, index, s):
+        
+        if index == len(s):
+            return 1
+        
+        if s[index] == '0':
+            return 0
+        
+        if index == len(s)-1:
+            return 1
+        
+        if index in self.memo:
+            return self.memo[index]
+        
+        ans = self.recur(index+1, s)
+        
+        if int(s[index : index + 2]) <= 26:
+            ans += self.recur(index+2, s)
+        
+        self.memo[index] = ans
+        
+        return ans
+        
+    
+    def numDecodings(self, s: str) -> int:
+        
+        if not s:
+            return 0
+        
+        return self.recur(0, s)
+
 class Solution(object):
     # Bottom Up approch.
     def decodeWays(self, s):

@@ -32,7 +32,6 @@ class Solution(object):
         first = l1
         second = l2
         
-        import pdb; pdb.set_trace()
         carry = 0
         
         node = ListNode(None)
@@ -52,7 +51,6 @@ class Solution(object):
             first = first.next
             second = second.next
         
-        import pdb; pdb.set_trace()
 
         if first:
             node.next = ListNode(first.data + carry)
@@ -67,7 +65,6 @@ class Solution(object):
         
         head = head.next
         return_list = self.reverse(head)
-        import pdb; pdb.set_trace()
         return return_list
     
     def reverse(self, head):

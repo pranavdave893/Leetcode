@@ -2,6 +2,7 @@ alphabets = ['a','b','c','ch','dd','d','e', 'f', 'ff', 'g', 'ng', 'h', 'i', 'j',
 alpha_index = {}
 for idx,val in enumerate(alphabets):
     alpha_index[val] = idx
+
 def comp(s):
     temp = []
     i = 0
@@ -14,6 +15,7 @@ def comp(s):
             i += 1
     temp.append(alpha_index[s[len(s)-1]])
     return tuple(temp)
+
 strings = ['abcchd', 'abcdd']
 a = strings.sort(key=comp)
 print(strings)

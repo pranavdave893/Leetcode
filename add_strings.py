@@ -5,28 +5,34 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        dct = {'{0}'.format(i):i for i in range(10)}
-
-        n1_s = len(num1) - 1
-        n2_s = len(num2) - 1
-        sum_string = []
-        carry = 0
-        while (n2_s >= 0 and n1_s >= 0):
-            
-            temp = dct[num2[n2_s]] + dct[num1[n1_s]] + carry
-
-            if temp > 10:
-                temp = temp % 10
-                carry = 1
-            
-            sum_string.append('%s' %temp)
-            n2_s -= 1
-            n1_s -= 1
+        from collections import deque
+        num1Pointer = len(num1) - 1
+        num2Pointer = len(num2) - 1
         
-        return ''.join(sum_string[::-1])
+        result = deque()
+        carry = 0
+        while num1Pointer >= 0 or num2Pointer >= 0:
+            num1Dig = ord(num1[num1Pointer]) - ord('0') if num1Pointer >= 0 else 0
+            num2Dig = ord(num2[num2Pointer]) - ord('0') if num2Pointer >= 0 else 0
+            currentSum = num1Dig + num2Dig + carry
+            carry = currentSum // 10
+            result.appendleft(str(currentSum % 10))
+            num1Pointer -= 1
+            num2Pointer -= 1
+        
+        if carry:
+            result.appendleft(str(carry))
+        
+        return "".join(result)
 
 abc = Solution()
-print (abc.addStrings('1234', '456'))
+print (abc.addStrings('99', '9'))
+
+"""
+
+112.55
+7.9
+"""
 
             
 

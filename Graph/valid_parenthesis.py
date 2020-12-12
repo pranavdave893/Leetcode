@@ -39,4 +39,4 @@ class Solution:
 
 
 abc = Solution()
-abc.checkValidString("covid2019")
+print (abc.checkValidString("covid2019"))

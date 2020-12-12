@@ -16,6 +16,7 @@ class Solution(object):
         
         return abs(ans)
     
+    
     def findKthLargest2(self, nums, k):
         min_heap = nums[:k]
         heapify(min_heap)
@@ -26,9 +27,11 @@ class Solution(object):
         
         return min_heap[0]
     
+    
     def findKthLargest3(self, nums, k):
         return self.quickSelect(nums, 0, len(nums)-1, k)
 
+    
     def quickSelect(self, nums, start, n, k): # quick select
         pos = self.partition(nums, start, n)
         if pos == k-1:
@@ -37,6 +40,7 @@ class Solution(object):
             return self.quickSelect(nums, start, pos - 1, k)
         return self.quickSelect(nums, pos + 1, n, k)
         
+
     def partition(self, nums, left, right):
         pivot = nums[right] # pick the last one as pivot
         i = left

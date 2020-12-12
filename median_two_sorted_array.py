@@ -18,6 +18,7 @@ class Solution(object):
             max_len_num = nums1
         
         partition_size_min = len(min_len_num) / 2
+        
         while True:
             partition_size_max = ((len_x + len_y + 1) / 2) - partition_size_min
 

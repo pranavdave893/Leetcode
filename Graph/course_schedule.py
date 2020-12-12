@@ -10,7 +10,9 @@ class Solution(object):
         :rtype: bool
         """
         indegree = {}
+        
         graph = {x:[] for x in range(numCourses)}
+        
         for courses, pre in prerequisites:
             graph[pre].append(courses)
         

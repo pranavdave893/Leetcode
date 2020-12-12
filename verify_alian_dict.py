@@ -1,27 +1,31 @@
+"""
+Q: 
+tags : Facebook, easy
+"""
 class Solution(object):
-    def isAlienSorted(self, words, order):
-        """
-        :type words: List[str]
-        :type order: str
-        :rtype: bool
-        """
-        dct = {}
-        for x,y in enumerate(order):
-            dct[y] = x
-        
-        for w1, w2 in zip(words, words[1:]):
-            if len(w1) > len(w2) and w1[:len(w2)] == w2:
-                return False
-            
-            for s1, s2 in zip(w1, w2):
-                if dct[s1] < dct[s2]:
+    def isAlien(self, words, order):
+        order_index = {c: i for i, c in enumerate(order)}
+
+        for i in range(len(words) - 1):
+            word1 = words[i]
+            word2 = words[i+1]
+
+            # Find the first difference word1[k] != word2[k].
+            for k in range(min(len(word1), len(word2))):
+                # If they compare badly, it's not sorted.
+                if word1[k] != word2[k]:
+                    if order_index[word1[k]] > order_index[word2[k]]:
+                        return False
                     break
-                else:
+            else:
+                # If we didn't find a first difference, the
+                # words are like ("app", "apple").
+                if len(word1) > len(word2):
                     return False
-        
+
         return True
 
-words = ["word","world","row"]
-order = "worldabcefghijkmnpqstuvxyz"
+words = ["appm", "apple"]
+order = "abcdefghijklmnopqrstuvwxyz"
 abc = Solution()
-abc.isAlienSorted(words, order)
+abc.isAlien(words, order)

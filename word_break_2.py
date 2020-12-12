@@ -21,22 +21,34 @@ class Solution(object):
     
     def wordBreak_dp(self, s, wordDict):
         # DFS + Memo
-        wordDict = set(wordDict)
-        backup = {}
-        def DFS(s):
+        word_dict = set(wordDict)
+                
+        memo = {}
+        
+        def dfs(s):
+            
+            if s in memo:
+                return memo[s]
+            
             if not s:
                 return ['']
-            if s not in backup:
-                backup[s]= []
-                for i in range(1, len(s)+1):
-                    word = s[:i]
-                    if word in wordDict:
-                        # sentences = DFS(s[i:])
-                        for ss in DFS(s[i:]):
-                            backup[s].append(word + ' ' + ss) 
-            return backup[s]
-        DFS(s)
-        return [bu[:-1] for bu in backup[s]]
+            
+            memo[s] = []
+            
+            word = ""
+            
+            for i in range(len(s)):
+                word += s[i]
+                
+                if word in word_dict:
+                    
+                    for next_str in dfs(s[i+1:]):
+                        memo[s].append(word + " " + next_str)
+            return memo[s]
+        
+        dfs(s)
+        
+        return [x[:-1] for x in memo[s]]
     
     def wordBreak_fast(self, s, wordDict):
         self.length = sorted(list(set([len(word) for word in wordDict])))

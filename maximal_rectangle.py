@@ -5,7 +5,7 @@ class Solution(object):
         m, n, A = len(matrix), len(matrix[0]), 0
         height = [0 for _ in range(n)]
         for i in range(m):
-            for j in xrange(n):
+            for j in range(n):
                 height[j] = height[j]+1 if matrix[i][j]=="1" else 0
             A = max(A, self.largestRectangleArea(height))
         return A
@@ -23,4 +23,9 @@ class Solution(object):
         return A
 
 abc = Solution()
-print (abc.maximalRectangle([["0","1"],["1","0"]]))
+print (abc.maximalRectangle([
+    ["1","0","1","0","0"],
+    ["1","0","1","1","1"],
+    ["1","1","1","1","1"],
+    ["1","0","0","1","0"]
+]))

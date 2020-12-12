@@ -18,6 +18,7 @@ class Solution(object):
             for i in range(cols):
                 count += 1
                 matrix[first_row][first_col + i] = count
+            
             for i in range(1, rows):
                 count += 1
                 matrix[first_row + i][last_col] = count

@@ -13,7 +13,7 @@ class Solution(object):
                 dfs(left-1, right, curr + "(", result)
             
             if left < right:
-                dfs(left, right-1, curr + ")", result)
+                dfs(left, right-1, curr + ")", result) 
         
         dfs(left, right, curr, result)
 

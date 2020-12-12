@@ -1,4 +1,26 @@
 class Solution(object):
+    def trap_interview(self, x):
+
+        left_max = [0] * len(x)
+        right_max = [0] * len(x)
+
+        l_max, r_max = 0, 0
+        water = 0
+
+        for idx, i in enumerate(x):
+            l_max = max(l_max, i)
+            left_max[idx] = l_max
+        
+        for i in range(len(x)-1, -1, -1):
+            r_max = max(r_max, x[i])
+            right_max[i] = r_max
+        
+        for i in range(len(x)):
+            water += min(left_max[i], right_max[i]) - x[i]
+        
+        return water
+
+
     def trap_stack(self, x):
         """
         Stack based approch Space O(N) and Time O(N)
@@ -73,9 +95,13 @@ class Solution(object):
 
                 right -= 1
         print(answer)
+    
+    
+
 
 abc = Solution()
-abc.trap([0,1,0,2,1,0,1,3,2,1,2,1])
+abc.trap([3, 1, 4, 1, 2, 1, 2])
+print (abc.trap_interview([3, 1, 4, 1, 2, 1, 2]))
 
 
 

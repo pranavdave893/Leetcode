@@ -9,6 +9,9 @@ class Solution(object):
         :rtype: ListNode
         """
         
+        """
+        XXX: This solution only works with Python 2
+        """
         dummy = ListNode(val=None)
         
         curr = dummy

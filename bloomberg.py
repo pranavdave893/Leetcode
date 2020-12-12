@@ -1,3 +1,6 @@
+import heapq
+
+from collections import Counter
 '''
 
 {
@@ -103,7 +106,7 @@ def find_right_index(nums):
 
         val, curr_idx = -temp[0], temp[1]
 
-        if max_idx == -1 or curr_idx > max_idx or nums[max_idx] == num[curr_idx]:
+        if max_idx == -1 or curr_idx > max_idx or nums[max_idx] == nums[curr_idx]:
             max_idx = max(curr_idx, max_idx)
             continue
 
@@ -112,9 +115,97 @@ def find_right_index(nums):
     
     return ans
 
+# find_right_index([21,5,6,56,88,5])
+class UDP(object):
+    def __init__(self):
+        self.dct = {}
     
+    def udp_packets(self, number):
+
+        dct = self.dct
+        if dct:
+            if number-1 in dct and number+1 not in dct:
+                print (number-1, number)
+                del dct[number-1]
+            
+            if number-1 in dct and number+1 in dct:
+                print (number-1, number, number+1)
+                del dct[number-1]
+                del dct[number+1]
+                return
+            
+            if number+1 in dct and number-1 not in dct:
+                print (number+1, number)
+                del dct[number+1]
+                return
+            
+            if number +1 in dct and number-1 not in dct:
+                print (number-1, number, number+1)
+                del dct[number-1]
+                del dct[number+1]
+                return
         
+        dct[number] = number
+
+
+# abc = UDP()
+# abc.udp_packets(2)
+# abc.udp_packets(4)
+# abc.udp_packets(6)
+# abc.udp_packets(5)
+# abc.udp_packets(7)
+# abc.udp_packets(3)
+# abc.udp_packets(4)
+# abc.udp_packets(8)
+# abc.udp_packets(10)
+# abc.udp_packets(9)
+# abc.udp_packets(15)
+# abc.udp_packets(12)
+# abc.udp_packets(11)
+# abc.udp_packets(17)
+# abc.udp_packets(14)
+# abc.udp_packets(13)
+# abc.udp_packets(11)
+# abc.udp_packets(19)
+# abc.udp_packets(22)
+
+
+
+class frequency():
+
+
+    def output(self, nums):
+        cnt = {}
         
+        for item in nums:
+            if item not in cnt:
+                cnt[item] = 1
+            else:
+                cnt[item] += 1
+                
+        newCnt = sorted(cnt.items(), key=lambda x: (x[1], -x[0]))
+                
+        soln = []
+        for item in newCnt:
+            element, count = item
+            soln.extend([element] * count)
+            
+        print (soln)
+        # heap = []
+        # element_to_frequency = Counter(elements)
+        # elements = []
+
+        # for element, frequency in element_to_frequency.items():
+        #     heapq.heappush(heap, (frequency, -element))
+
+        # while heap:
+        #     frequency, element = heapq.heappop(heap)
+        #     elements.extend([-element] * frequency)
+
+        # return elements
+
+abc = frequency()
+abc.output([3, 4, 2, 5, 2, 3, 4, 3, 6,6,6,6])
 
 
     

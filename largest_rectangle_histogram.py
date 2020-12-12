@@ -14,7 +14,6 @@ class Solution:
         
         return ans
     
-
     def largestRectangleArea_divide(self, heights: List[int]) -> int:
         
         def divide(start:int, end:int) -> int:
@@ -31,9 +30,6 @@ class Solution:
         
         return divide(0, len(heights)-1)
             
-
-
-        
 
 abc = Solution()
 print (abc.largestRectangleArea([6,7,5,2,4,5,9,3]))

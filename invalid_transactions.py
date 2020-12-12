@@ -20,7 +20,9 @@ class Solution:
             left = right = 0
             
             for t_index in indexes:
+                
                 t = transactions[t_index]
+                
                 if (t.amount > 1000):
                     res.append("{},{},{},{}".format(t.name, t.time, t.amount, t.city))
                     continue
@@ -30,6 +32,7 @@ class Solution:
                 
                 while right < len(indexes)-1 and transactions[indexes[right+1]].time <= t.time + 60: # O(60) time
                     right += 1
+                
                 for i in range(left,right+1): # O(120) time
                     if transactions[indexes[i]].city != t.city:
                         res.append("{},{},{},{}".format(t.name, t.time, t.amount, t.city))

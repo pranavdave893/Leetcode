@@ -1,12 +1,4 @@
 class Solution(object):
-    def is_valid(self, s):
-        count = 0
-        for x in s:
-            count += 1 if x == "(" else 0
-            count -= 1 if x == ")" else 0
-            if count < 0:
-                return False
-        return count == 0
 
     def removeInvalidParentheses(self, s):
         res = []
@@ -31,7 +23,7 @@ class Solution(object):
                 res.append(s)
                 return
             
-            for i in xrange(len(s)):
+            for i in range(len(s)):
                 if s[i] in {'(', ')'}:
                     new_s = s[:i] + s[i+1:]
                     new_s_count = find_positive_negative_count(new_s)
@@ -41,6 +33,15 @@ class Solution(object):
         
         dfs(s, find_positive_negative_count(s), res)
         return res
+    
+    def is_valid(self, s):
+        count = 0
+        for x in s:
+            count += 1 if x == "(" else 0
+            count -= 1 if x == ")" else 0
+            if count < 0:
+                return False
+        return count == 0
 
     def removeInvalidParentheses_bfs(self, s):
         level = {s}
@@ -61,4 +62,4 @@ class Solution(object):
 
 
 abc = Solution()
-print (abc.removeInvalidParentheses_bfs("()())()"))
+print (abc.removeInvalidParentheses("()())()"))

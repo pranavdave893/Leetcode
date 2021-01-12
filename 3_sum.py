@@ -36,7 +36,7 @@ class Solution(object):
                     while l<r and nums[l] == nums[l-1]:
                         l += 1
                     while r>l and nums[r] == nums[r+1]:
-                        r += 1
+                        r -= 1
                 
                 elif tmp > target:
                     r -= 1
@@ -46,4 +46,4 @@ class Solution(object):
         return answer
 
 abc = Solution()
-print (abc.threeSum([0,0,0]))
+print (abc.threeSum([-1,0,1,2,-1,-4]))

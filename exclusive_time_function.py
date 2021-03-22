@@ -22,7 +22,6 @@ Function 0 is running again at the beginning of time 6, and also ends at the end
 So function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.
 
 """
-from collections import OrderedDict
 class Solution(object):
     def exclusiveTime(self, n, logs):
         """

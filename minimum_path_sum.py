@@ -4,6 +4,35 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
+        if not grid or not grid[0]:
+            return 0
+        
+        R = len(grid)
+        C = len(grid[0])
+        
+        dp = [[0]*C for _ in range(R)]
+        
+        
+        def dfs(x, y):
+            if x >= R or y >= C:
+                return float('inf')
+            
+            if dp[x][y]:
+                return dp[x][y]
+            
+            if x == R-1 and y == C-1:
+                return grid[x][y]
+            
+            
+            path1 = dfs(x+1, y)
+            path2 = dfs(x, y+1)
+            
+            dp[x][y] = grid[x][y] + min(path1, path2)
+            return dp[x][y]
+        
+        print (dfs(0, 0))
+
+
         R = len(grid)
         C = len(grid[0])
 

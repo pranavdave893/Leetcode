@@ -4,7 +4,7 @@ tags : Facebook, medium, array
 """
 
 class Solution(object):
-    def max_swap(self, num):
+    def max_swap(self, nums):
         nums = [int(i) for i in str(nums)]
         
         xi, yi = 0, 0
@@ -35,7 +35,7 @@ class Solution(object):
                     A[i], A[last[d]] = A[last[d]], A[i]
                     
                     return int("".join(map(str, A)))
-    return num
+        return num
 
 abc = Solution()
-abc.max_swap(85476)
+abc.max_swap(2763)

@@ -4,18 +4,18 @@ class Solution(object):
         :type M: List[List[int]]
         :rtype: int
         """
+        seen = set()
+        ans = 0
 
-        def dfs(i, seen):
+        def dfs(i):
             for j in range(len(M)):
                 if M[i][j] == 1 and j not in seen:
                     seen.add(j)
-                    dfs(j, seen)
+                    dfs(j)
 
-        seen = set()
-        ans = 0
         for i in range(len(M)):
             if i not in seen:
-                dfs(i, seen)
+                dfs(i)
                 ans += 1
         print (ans)
 

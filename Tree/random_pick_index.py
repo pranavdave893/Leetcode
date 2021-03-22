@@ -30,3 +30,6 @@ class Solution(object):
                 if rand == count:
                     res = i
         return res
+
+abc = Solution([1,2,3,3,3,4,5,6,3,3])
+print (abc.pick(3))

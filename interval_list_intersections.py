@@ -29,7 +29,6 @@ class Solution(object):
         ans = []
         
         i = j = 0
-        import pdb; pdb.set_trace()
         while i < len(A) and j < len(B):
             lo = max(A[i][0], B[j][0])
             hi = min(A[i][1], B[j][1])

@@ -17,26 +17,30 @@ class Solution(object):
         cycle = n + 1
         answer = 0
 
+        ans = []
         for tasks, count in task_count.items():
-            heappush(heap, -count)
+            heappush(heap, (-count, tasks))
         
         while heap:
             new_count = 0
             tmp = []
             for _ in range(cycle):
                 if heap:
-                    tmp.append(heappop(heap))
+                    temp = heappop(heap)
+                    tmp.append(temp)
+                    ans.append(temp[1])
                     new_count += 1
             
-            for x in tmp:
+            for x, y in tmp:
                 x += 1
                 if x != 0:
-                    heappush(heap, x)
+                    heappush(heap, (x, y))
             
             answer += cycle if heap else new_count
 
+        print (ans)
         return answer
     
 abc = Solution()
-print (abc.leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"], 2))
+print (abc.leastInterval(["A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "C"], 1))
 

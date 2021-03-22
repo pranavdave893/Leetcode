@@ -1,5 +1,4 @@
 from collections import Counter
-from copy import copy, deepcopy
 class Solution:
     def checkInclusion(self, s1, s2):
         windowStart, matched = 0, 0

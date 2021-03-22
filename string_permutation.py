@@ -3,7 +3,7 @@ def toString(List):
   
 def permute(a, l, r): 
     if l==r: 
-        print (toString(a))
+        print (a)
     else: 
         for i in range(l,r):
             a[l], a[i] = a[i], a[l] 
@@ -11,10 +11,10 @@ def permute(a, l, r):
             a[l], a[i] = a[i], a[l] # backtrack 
   
 # # Driver program to test the above function 
-string = "ABC"
-n = len(string) 
-a = list(string) 
-permute(a, 0, n) 
+
+
+a = list([1,2,3]) 
+permute(a, 0, len(a)) 
 
 # class Solution(object):
 #     def permutation(self, nums):
@@ -34,5 +34,5 @@ permute(a, 0, n)
 #         # result = map(list, result)
 #         return result
 
-abc = Solution()
-print (abc.permutation([1,1,2]))
+# abc = Solution()
+# print (abc.permutation([1,1,2]))

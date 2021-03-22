@@ -1,4 +1,19 @@
 class Solution(object):
+    def maxEnvelopes_2(self, envelopes):
+        import bisect
+        if not envelopes:return 0
+        envelopes.sort(key=lambda x : (x[0], -x[1]))
+        
+        ans = []
+        
+        for x,y in envelopes:
+            idx = bisect.bisect_left(ans, y)
+            if idx == len(ans):
+                ans.append(y)
+            elif ans[idx-1] < y:
+                ans[idx] = y
+        return len(ans)
+    
     def maxEnvelopes(self, envelopes):
         """
         :type envelopes: List[List[int]]
@@ -20,4 +35,4 @@ class Solution(object):
         print (ans)
 
 abc = Solution()
-abc.maxEnvelopes([[2,100],[3,200],[4,300],[5,500],[5,400],[5,250],[6,370],[6,360],[7,380]])
+abc.maxEnvelopes_2([[46,89],[50,53],[52,68],[72,45],[77,81]])
